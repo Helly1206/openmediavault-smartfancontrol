@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * Copyright (C) 2014-2019 OpenMediaVault Plugin Developers.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+namespace OMV\Engined\Module;
+
+use OMV\Config\Database;
+use OMV\Engine\Module\IServiceStatus;
+use OMV\Engine\Module\ServiceAbstract;
+use OMV\Engine\Notify\Dispatcher;
+use OMV\Engine\Notify\IListener;
+use OMV\System\Process;
+use OMV\System\SystemCtl;
+
+class SmartFanControl extends ServiceAbstract implements
+    IListener,
+    IServiceStatus
+{
+    /** @var Database */
+    private $database;
+
+    /** @var string */
+    private $dataModelPath = 'conf.service.smartfancontrol';
+
+    /** @var string */
+    private $eventMessagePath = 'org.openmediavault.conf.service.smartfancontrol';
+
+    /** @var string */
+    private $serviceName = 'smartfancontrol.service';
+
+    public function __construct(Database $database = null)
+    {
+        $this->database = $database ?: Database::getInstance();
+    }
+
+    /**
+     * Get the module name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return 'smartfancontrol';
+    }
+
+    /**
+     * Get the module status.
+     *
+     * @return array
+     */
+    public function getStatus()
+    {
+        $object = $this->database->get($this->dataModelPath);
+        $systemCtl = new SystemCtl($this->serviceName);
+
+        return [
+            'name' => $this->getName(),
+            'title' => gettext('SmartFanControl'),
+            'enabled' => $object->get('enable'),
+            'running' => $systemCtl->isActive(),
+        ];
+    }
+
+    /**
+     * Bind listeners.
+     *
+     * @param Dispatcher $dispatcher The dispatcher object.
+     *
+     * @return void
+     */
+    public function bindListeners(Dispatcher $dispatcher)
+    {
+        $dispatcher->addListener(
+            OMV_NOTIFY_CREATE | OMV_NOTIFY_MODIFY | OMV_NOTIFY_DELETE,
+            $this->eventMessagePath,
+            [$this, 'setDirty']
+        );
+    }
+}

@@ -1,0 +1,161 @@
+[{
+    "type": "rpc",
+    "id": "rpc.smartfancontrol.setsettings",
+    "params": {
+        "type": "object",
+        "properties": {
+            "enable": {
+                "type": "boolean",
+                "required": true
+            },
+            "manual": {
+                "type": "boolean"
+            },
+            "mon_temp": {
+                "type": "number"
+            },
+            "mon_rpm": {
+                "type": "number"
+            },
+            "mon_pwm": {
+                "type": "number"
+            },
+            "mon_alarm": {
+                "type": "string"
+            },
+            "fan_mode": {
+                "type": "string",
+                "required": true
+            },
+            "fan_ONOFFgpio": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_ONOFFinvert": {
+                "type": "boolean",
+                "required": true
+            },
+            "fan_PWMcalibrated": {
+                "type": "number",
+                "required": true
+            },
+            "fan_PWMgpio": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_PWMfrequency": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_PWMinvert": {
+                "type": "boolean",
+                "required": true
+            },
+            "fan_recalibrate": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_RPMgpio": {
+                "type": "integer",
+                "required": true
+            },                
+            "fan_RPMpullup": {
+                "type": "boolean",
+                "required": true
+            },
+            "fan_RPMppr": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_RPMedge": {
+                "type": "boolean",
+                "required": true
+            },
+            "fan_RPMfiltersize": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_Frequency": {
+                "type": "integer",
+                "required": true
+            },
+            "fan_Pgain": {
+                "type": "number",
+                "required": true
+            },
+            "fan_Igain": {
+                "type": "number",
+                "required": true
+            },
+            "temp_cpu": {
+                "type": "boolean",
+                "required": true
+            },
+            "temp_hdd": {
+                "type": "string"
+            },
+            "temp_ext": {
+                "type": "string"
+            },
+            "temp_mode": {
+                "type": "string",
+                "required": true
+            },
+            "temp_Farenheit": {
+                "type": "boolean",
+                "required": true
+            },
+            "temp_AlarmHigh": {
+                "type": "number",
+                "required": true
+            },
+            "temp_AlarmCrit": {
+                "type": "number",
+                "required": true
+            },
+            "temp_AlarmShutdown": {
+                "type": "string"
+            },           
+            "control_mode": {
+                "type": "string",
+                "required": true
+            },
+            "control_TempOn": {
+                "type": "number",
+                "required": true
+            },
+            "control_TempHyst": {
+                "type": "number",
+                "required": true
+            },
+            "control_FanStart": {
+                "type": "number",
+                "required": true
+            },
+            "control_TempStart": {
+                "type": "number",
+                "required": true
+            },
+            "control_TempFull": {
+                "type": "number",
+                "required": true
+            },
+            "control_LinSteps": {
+                "type": "number",
+                "required": true
+            },
+            "control_Frequency": {
+                "type": "integer",
+                "required": true
+            },
+            "control_Pgain": {
+                "type": "number",
+                "required": true
+            },
+            "control_Igain": {
+                "type": "number",
+                "required": true
+            }
+        }
+    }
+}]

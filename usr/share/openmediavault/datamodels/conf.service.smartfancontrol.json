@@ -1,0 +1,251 @@
+{
+    "type": "config",
+    "id": "conf.service.smartfancontrol",
+    "title": "SmartFanControl",
+    "queryinfo": {
+        "xpath": "/config/services/smartfancontrol",
+        "iterable": false
+    },
+    "properties": {
+        "enable": {
+            "type": "boolean",
+            "default": false
+        },
+        "manual": {
+            "type": "boolean",
+            "default": false
+        },
+        "fan": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "required": true,
+                    "enum": ["ONOFF","PWM","RPM"],
+                    "default": "RPM"
+                },
+                "ONOFFgpio": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 27,
+                    "required": true,
+                    "default": 27
+                },
+                "ONOFFinvert": {
+			        "type": "boolean",
+			        "required": true,
+                    "default": false
+		        },
+                "PWMcalibrated": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 100,
+                    "required": true,
+                    "default": 30
+                },
+                "PWMgpio": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 27,
+                    "required": true,
+                    "default": 18
+                },
+                "PWMfrequency": {
+                    "type": "integer",
+                    "minimum": 1,
+			        "maximum": 30000,
+                    "required": true,
+                    "default": 10000
+                },
+                "PWMinvert": {
+                    "type": "boolean",
+                    "required": true,
+                    "default": false
+                },
+                "recalibrate": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 365,
+                    "required": true,
+                    "default": 7
+                },
+                "RPMgpio": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 27,
+                    "required": true,
+                    "default": 17
+                },                
+                "RPMpullup": {
+                    "type": "boolean",
+                    "required": true,
+                    "default": true
+                },
+                "RPMppr": {
+                    "type": "integer",
+                    "minimum": 1,
+			        "maximum": 4096,
+                    "required": true,
+                    "default": 2
+                },
+                "RPMedge": {
+                    "type": "boolean",
+                    "required": true,
+                    "default": true
+                },
+                "RPMfiltersize": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 255,
+                    "required": true,
+                    "default": 0
+                },
+                "Frequency": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 100,
+                    "required": true,
+                    "default": 10
+                },
+                "Pgain": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 10000,
+                    "required": true,
+                    "default": 0.1
+                },
+                "Igain": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 10000,
+                    "required": true,
+                    "default": 0.2
+                }
+            }
+        },
+        "temp": {
+            "type": "object",
+            "properties": {
+                "cpu": {
+                    "type": "boolean",
+                    "required": true,
+                    "default": true
+                },
+                "hdd": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "ext": {
+                    "type": "string",
+                    "required": true,
+                    "default": ""
+                },
+                "mode": {
+                    "type": "string",
+                    "required": true,
+                    "enum": ["MIN","AVG","MAX"],
+                    "default": "MAX"
+                },
+                "Farenheit": {
+                    "type": "boolean",
+                    "required": true,
+                    "default": false
+                },
+                "AlarmHigh": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 150,
+                    "required": true,
+                    "default": 65
+                },
+                "AlarmCrit": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 150,
+                    "required": true,
+                    "default": 80
+                },
+                "AlarmShutdown": {
+                    "type": "string",
+                    "required": true,
+                    "default": "TRUE"
+                }  
+            }
+        },
+        "control": {
+            "type": "object",
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "required": true,
+                    "enum": ["ONOFF","LINEAR","PI"],
+                    "default": "LINEAR"
+                },
+                "TempOn": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 150,
+                    "required": true,
+                    "default": 55
+                },
+                "TempHyst": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 150,
+                    "required": true,
+                    "default": 5
+                },
+                "FanStart": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 100,
+                    "required": true,
+                    "default": 20
+                },
+                "TempStart": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 150,
+                    "required": true,
+                    "default": 45
+                },
+                "TempFull": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 150,
+                    "required": true,
+                    "default": 65
+                },
+                "LinSteps": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 50,
+                    "required": true,
+                    "default": 2.5
+                },
+                "Frequency": {
+                    "type": "integer",
+                    "minimum": 0,
+			        "maximum": 100,
+                    "required": true,
+                    "default": 1
+                },
+                "Pgain": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 10000,
+                    "required": true,
+                    "default": 10
+                },
+                "Igain": {
+                    "type": "number",
+                    "minimum": 0,
+			        "maximum": 10000,
+                    "required": true,
+                    "default": 0.1
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+Source: openmediavault-smartfancontrol
+Section: net
+Priority: optional
+Maintainer: Helly1206 <hellyrulez@hotmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+XB-Plugin-Section: utilities
+
+Package: openmediavault-smartfancontrol
+Architecture: all
+Depends: openmediavault (>= 5.1), smartfancontrol (>= 0.81), python3,
+         ${misc:Depends}
+Description: smartfancontrol plugin for OpenMediaVault.
+ Allow controlling smartfancontrol directly from OpenMediaVault.
