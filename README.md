@@ -1,4 +1,4 @@
-openmediavault-syncwatch
-========================
+openmediavault-smartfancontrol
+==============================
 
-SyncWatch plugin for OpenMediaVault.
+SmartFanControl plugin for OpenMediaVault.
